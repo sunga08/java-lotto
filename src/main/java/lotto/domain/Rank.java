@@ -26,4 +26,15 @@ public enum Rank {
 
         throw new IllegalArgumentException("일치 갯수가 잘못되었습니다.");
     }
+
+    public static Rank returnRank(int matchCount){
+        Rank[] ranks = values();
+
+        for (Rank rank : ranks){
+            if(rank.matchCount == matchCount)
+                return rank;
+        }
+
+        return Rank.MISS;
+    }
 }

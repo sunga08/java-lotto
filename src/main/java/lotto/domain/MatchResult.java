@@ -8,19 +8,20 @@ public class MatchResult {
     private static final int MIN_MATCH_COUNT = 3;
     private static final int MAX_MATCH_COUNT = 6;
 
-    private Map<Integer, Integer> matchResult;
+    private Map<Rank, Integer> matchResult;
 
     public MatchResult(){
         matchResult = new HashMap<>();
+
         for(int matchCount = 0; matchCount <= MAX_MATCH_COUNT; matchCount++){
-            matchResult.put(matchCount, 0);
+            matchResult.put(Rank.returnRank(matchCount), 0);
         }
     }
 
     public MatchResult(List<Integer> matchNumberList){
         matchResult = new HashMap<>();
         for(int matchCount = 0; matchCount <= MAX_MATCH_COUNT; matchCount++){
-            matchResult.put(matchCount, matchNumberList.get(matchCount));
+            matchResult.put(Rank.returnRank(matchCount), matchNumberList.get(matchCount));
         }
     }
 
@@ -29,7 +30,7 @@ public class MatchResult {
 
         for(Lotto lotto : myLottos){
             myMatchCount = winningLotto.matchCount(lotto);
-            matchResult.put(myMatchCount, matchResult.get(myMatchCount) + 1);
+            matchResult.put(Rank.returnRank(myMatchCount), matchResult.get(myMatchCount) + 1);
         }
 
     }
