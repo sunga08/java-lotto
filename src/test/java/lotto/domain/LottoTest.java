@@ -20,6 +20,7 @@ public class LottoTest {
     @DisplayName("로또에서 당첨 번호가 일치하는 개수를 반환한다.")
     void 일치하는_당첨번호_개수_반환(){
         Lotto lotto = new Lotto(Arrays.asList(1,2,3,4,5,6));
-        assertThat(lotto.matchCount(Arrays.asList(1,2,3,7,7,7))).isEqualTo(3);
+        WinningLotto winningLotto = new WinningLotto(Arrays.asList(1,2,3,7,7,7));
+        assertThat(winningLotto.matchCount(lotto)).isEqualTo(3);
     }
 }

@@ -33,26 +33,6 @@ public class Lotto {
         return numbers.toArray();
     }
 
-    int matchCount(List<Integer> winningNumbers) {
-        int matchCount = 0;
-
-        for(int i = 0; i < winningNumbers.size(); i++){
-            matchCount = addMatchCount(matchCount, winningNumbers.get(i));
-        }
-
-        return matchCount;
-    }
-
-    int matchCount(WinningLotto winningLotto) {
-        int matchCount = 0;
-
-        for(int i = 0; i < LOTTO_NUMBER_COUNT; i++){
-            matchCount = addMatchCount(matchCount, winningLotto.winningLottoOf(i));
-        }
-
-        return matchCount;
-    }
-
     public int addMatchCount(int matchCount, int winningNumber){
         if(numbers.contains(winningNumber)){
             matchCount ++;

@@ -7,7 +7,6 @@ import java.util.Map;
 public class MatchResult {
     private static final int MIN_MATCH_COUNT = 3;
     private static final int MAX_MATCH_COUNT = 6;
-    //private static final WinningMoney winningMoney = new WinningMoney();
 
     private Map<Integer, Integer> matchResult;
 
@@ -29,14 +28,13 @@ public class MatchResult {
         int myMatchCount = 0;
 
         for(Lotto lotto : myLottos){
-            myMatchCount = lotto.matchCount(winningLotto);
-            //myMatchCount = winningLotto.matchCount(lotto);
+            myMatchCount = winningLotto.matchCount(lotto);
             matchResult.put(myMatchCount, matchResult.get(myMatchCount) + 1);
         }
 
     }
 
-    int matchCountOf(int count){
+    public int matchCountOf(int count){
         return matchResult.get(count);
     }
 

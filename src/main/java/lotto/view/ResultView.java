@@ -1,10 +1,7 @@
 package lotto.view;
 
-import lotto.domain.Rank;
-import lotto.domain.WinningLotto;
+import lotto.domain.*;
 import lotto.util.LottoUtil;
-import lotto.domain.MyLottos;
-import lotto.domain.WinningMoney;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +9,6 @@ import java.util.List;
 public class ResultView {
     private static final int MIN_MATCH_COUNT = 3;
     private static final int MAX_MATCH_COUNT = 6;
-    private static final WinningMoney winningMoney = new WinningMoney();
 
     public static void main(String[] args) {
         int payMoney = InputView.inputPayMoney();
@@ -23,9 +19,9 @@ public class ResultView {
         printMyLottos(myLottos, lottoCount);
 
         WinningLotto winningLotto = InputView.inputWinningNumbers();
-        myLottos.matchingNumbers(winningLotto);
+        MatchResult matchResult = myLottos.matchMyLotto(winningLotto);
 
-        printMatchResult(myLottos);
+        printMatchResult(matchResult);
 
         printReturnRate(myLottos.returnRate(payMoney));
     }
@@ -40,9 +36,9 @@ public class ResultView {
         }
     }
 
-    public static void printMatchResult(MyLottos myLottos){
+    public static void printMatchResult(MatchResult matchResult){
         for (int matchCount = MIN_MATCH_COUNT; matchCount <= MAX_MATCH_COUNT; matchCount++) {
-            System.out.println(matchCount + "개 일치 (" + Rank.winningMoneyOf(matchCount) + ") - " + myLottos.returnMatchCountOf(matchCount) + "개");
+            System.out.println(matchCount + "개 일치 (" + Rank.winningMoneyOf(matchCount) + ") - " + matchResult.matchCountOf(matchCount) + "개");
         }
     }
 

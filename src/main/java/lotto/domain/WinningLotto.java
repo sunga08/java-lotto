@@ -3,25 +3,20 @@ package lotto.domain;
 import java.util.List;
 
 public class WinningLotto {
-    private Lotto lotto;
-    private int bonusNo;
+    private Lotto winningLotto;
 
     public WinningLotto(List<Integer> winningNumbers){
-        lotto = new Lotto(winningNumbers);
+        winningLotto = new Lotto(winningNumbers);
     }
 
-    public int matchCount(Lotto lotto){
+    public int matchCount(Lotto myLotto){
         int matchCount = 0;
 
-        for(int i = 0; i < lotto.numbers().size(); i++){
-            matchCount = lotto.addMatchCount(matchCount, lotto.numberOf(i));
+        for(int i = 0; i < myLotto.numbers().size(); i++){
+            matchCount = myLotto.addMatchCount(matchCount, winningLotto.numberOf(i));
         }
 
         return matchCount;
-    }
-
-    public int winningLottoOf(int index){
-        return lotto.numberOf(index);
     }
 
 }

@@ -29,10 +29,10 @@ public class MyLottoTest {
                 new Lotto(Arrays.asList(6,7,8,9,10,11))
         ));
         WinningLotto winningLotto = new WinningLotto(Arrays.asList(4,5,6,7,8,9));
-        myLottos.matchingNumbers(winningLotto);
+        MatchResult matchResult = myLottos.matchMyLotto(winningLotto);
 
-        assertThat(myLottos.returnMatchCountOf(1)).isEqualTo(1);
-        assertThat(myLottos.returnMatchCountOf(3)).isEqualTo(2);
-        assertThat(myLottos.returnMatchCountOf(4)).isEqualTo(1);
+        assertThat(matchResult.matchCountOf(1)).isEqualTo(1);
+        assertThat(matchResult.matchCountOf(3)).isEqualTo(2);
+        assertThat(matchResult.matchCountOf(4)).isEqualTo(1);
     }
 }
