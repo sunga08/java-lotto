@@ -7,7 +7,7 @@ import java.util.Map;
 public class MatchResult {
     private static final int MIN_MATCH_COUNT = 3;
     private static final int MAX_MATCH_COUNT = 6;
-    private static final WinningMoney winningMoney = new WinningMoney();
+    //private static final WinningMoney winningMoney = new WinningMoney();
 
     private Map<Integer, Integer> matchResult;
 
@@ -25,11 +25,12 @@ public class MatchResult {
         }
     }
 
-    void addMatchResult(List<Lotto> myLottos, List<Integer> winningNumbers) {
+    void addMatchResult(List<Lotto> myLottos, WinningLotto winningLotto) {
         int myMatchCount = 0;
 
         for(Lotto lotto : myLottos){
-            myMatchCount = lotto.matchCount(winningNumbers);
+            myMatchCount = lotto.matchCount(winningLotto);
+            //myMatchCount = winningLotto.matchCount(lotto);
             matchResult.put(myMatchCount, matchResult.get(myMatchCount) + 1);
         }
 
@@ -42,7 +43,7 @@ public class MatchResult {
     double calculateReturnRate(int payMoney) {
         int total = 0;
         for (int i = MIN_MATCH_COUNT; i <= MAX_MATCH_COUNT; i++){
-            total += (matchResult.get(i) * winningMoney.winningMoneyOf(i));
+            total += (matchResult.get(i) * Rank.winningMoneyOf(i));
         }
 
         return Math.floor((double)total / payMoney * 100) / 100;

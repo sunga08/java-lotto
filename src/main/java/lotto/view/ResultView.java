@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.domain.Rank;
+import lotto.domain.WinningLotto;
 import lotto.util.LottoUtil;
 import lotto.domain.MyLottos;
 import lotto.domain.WinningMoney;
@@ -20,8 +22,8 @@ public class ResultView {
         MyLottos myLottos = new MyLottos(lottoCount);
         printMyLottos(myLottos, lottoCount);
 
-        List<Integer> winningNumbers = InputView.inputWinningNumbers();
-        myLottos.matchingNumbers(winningNumbers);
+        WinningLotto winningLotto = InputView.inputWinningNumbers();
+        myLottos.matchingNumbers(winningLotto);
 
         printMatchResult(myLottos);
 
@@ -40,7 +42,7 @@ public class ResultView {
 
     public static void printMatchResult(MyLottos myLottos){
         for (int matchCount = MIN_MATCH_COUNT; matchCount <= MAX_MATCH_COUNT; matchCount++) {
-            System.out.println(matchCount + "개 일치 (" + winningMoney.winningMoneyOf(matchCount) + ") - " + myLottos.returnMatchCountOf(matchCount) + "개");
+            System.out.println(matchCount + "개 일치 (" + Rank.winningMoneyOf(matchCount) + ") - " + myLottos.returnMatchCountOf(matchCount) + "개");
         }
     }
 

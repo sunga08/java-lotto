@@ -43,7 +43,17 @@ public class Lotto {
         return matchCount;
     }
 
-    private int addMatchCount(int matchCount, int winningNumber){
+    int matchCount(WinningLotto winningLotto) {
+        int matchCount = 0;
+
+        for(int i = 0; i < LOTTO_NUMBER_COUNT; i++){
+            matchCount = addMatchCount(matchCount, winningLotto.winningLottoOf(i));
+        }
+
+        return matchCount;
+    }
+
+    public int addMatchCount(int matchCount, int winningNumber){
         if(numbers.contains(winningNumber)){
             matchCount ++;
         }
@@ -51,6 +61,9 @@ public class Lotto {
         return matchCount;
     }
 
+    public int numberOf(int idx){
+        return numbers.get(idx);
+    }
 
     @Override
     public String toString() {
