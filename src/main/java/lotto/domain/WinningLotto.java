@@ -15,25 +15,15 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
     }
 
-    private int matchCount(Lotto myLotto){
-        int matchCount = 0;
-
-        for(int i = 0; i < myLotto.numbers().size(); i++){
-            matchCount = myLotto.addMatchCount(matchCount, winningLotto.numberOf(i));
-        }
-
-        return matchCount;
-    }
-
     public Rank matchRank(Lotto lotto) {
-        int myMatchCount = matchCount(lotto);
+        int myMatchCount = winningLotto.matchCount(lotto);
         boolean isBonus = lotto.isMatchBonusNumber(bonusNumber);
 
         return Rank.rankOf(myMatchCount, isBonus);
     }
 
     public Rank matchRankByRankCondition(Lotto lotto) {
-        int myMatchCount = matchCount(lotto);
+        int myMatchCount = winningLotto.matchCount(lotto);
         boolean isBonus = lotto.isMatchBonusNumber(bonusNumber);
 
         RankMapping rankMapping = new RankMapping();

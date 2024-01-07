@@ -29,17 +29,17 @@ public class Lotto {
         return this.numbers;
     }
 
-    int matchCount(List<Integer> winningNumbers) {
+    int matchCount(Lotto lotto) {
         int matchCount = 0;
 
-        for(int i = 0; i < winningNumbers.size(); i++){
-            matchCount = addMatchCount(matchCount, winningNumbers.get(i));
+        for(int i = 0; i < lotto.numbers.size(); i++){
+            matchCount = addMatchCount(matchCount, lotto.numbers.get(i));
         }
 
         return matchCount;
     }
 
-    public int addMatchCount(int matchCount, int winningNumber){
+    private int addMatchCount(int matchCount, int winningNumber){
         if(numbers.contains(winningNumber)){
             matchCount ++;
         }
@@ -49,10 +49,6 @@ public class Lotto {
 
     public boolean isMatchBonusNumber(int bonusNumber){
         return numbers.contains(bonusNumber);
-    }
-
-    public int numberOf(int idx){
-        return numbers.get(idx);
     }
 
     @Override

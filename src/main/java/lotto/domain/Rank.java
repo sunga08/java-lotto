@@ -22,7 +22,7 @@ public enum Rank {
         Rank[] ranks = values();
 
         return Arrays.stream(ranks)
-                .filter(rank -> rank.matchCount == matchCount)
+                .filter(rank -> rank.match(matchCount))
                 .findFirst()
                 .orElse(MISS);
     }
@@ -48,6 +48,10 @@ public enum Rank {
         }
 
         return rank;
+    }
+
+    public boolean match(int matchCount) {
+        return this.matchCount == matchCount;
     }
 
     public int getMatchCount(){

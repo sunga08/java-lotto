@@ -24,7 +24,8 @@ public class MyLottos {
     public MatchResult matchMyLotto(WinningLotto winningLotto){
         MatchResult matchResult = new MatchResult();
         for(Lotto lotto : myLottos){
-            matchResult.addMatchResult(lotto, winningLotto);
+            Rank rank = winningLotto.matchRank(lotto);
+            matchResult.addMatchResult(rank);
         }
 
         return matchResult;

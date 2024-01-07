@@ -8,22 +8,21 @@ public class MatchResult {
     private Map<Rank, Integer> matchResult;
 
     public MatchResult(){
-        matchResult = new HashMap<>(){{
+        this(new HashMap<>(){{
             put(Rank.FIRST, 0);
             put(Rank.SECOND, 0);
             put(Rank.THIRD, 0);
             put(Rank.FOURTH, 0);
             put(Rank.FIFTH, 0);
             put(Rank.MISS, 0);
-        }};
+        }});
     }
 
     public MatchResult(Map<Rank, Integer> matchResult){
         this.matchResult = matchResult;
     }
 
-    void addMatchResult(Lotto lotto, WinningLotto winningLotto) {
-        Rank rank = winningLotto.matchRank(lotto);
+    void addMatchResult(Rank rank) {
         matchResult.put(rank, matchResult.get(rank) + 1);
     }
 
